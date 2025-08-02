@@ -95,16 +95,16 @@ API Data Nature: The states/all endpoint of the OpenSky Network API provides a s
 ## How to Run the Project
 ### 1. Clone the repository:
 
-Bash
+*Bash*
 
-git clone [https://github.com/](https://github.com/)[Your-Username]/OpenSky-ETL-Pipeline.git
-cd OpenSky-ETL-Pipeline
+*git clone [https://github.com/](https://github.com/)[Your-Username]/OpenSky-ETL-Pipeline.git
+cd OpenSky-ETL-Pipeline*
 
 ### 2. Install dependencies:
 
-Bash
+*Bash:*
 
-pip install -r requirements.txt
+*pip install -r requirements.txt*
 
 ### 3. Set up PostgreSQL:
 
@@ -116,11 +116,11 @@ Update the connection string in OpenSky - ETL.py with your database credentials.
 
 ### 4. Execute the ETL script:
 
-Bash
+*Bash*
 
-python "OpenSky - ETL.py"
+*python "OpenSky - ETL.py"*
 ### 5. View the Dashboard:
 
-Open the dashboards/OpenSky - ETL.pbix file in Power BI Desktop.
+Open the *dashboards/OpenSky - ETL.pbix* file in Power BI Desktop.
 
 Refresh the data to connect to your PostgreSQL database and see the latest data.
