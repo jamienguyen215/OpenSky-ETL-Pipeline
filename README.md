@@ -112,7 +112,7 @@ Ensure you have a PostgreSQL server running.
 
 Create a database (e.g., OpenSkyApi).
 
-Update the connection string in OpenSky - ETL.py with your database credentials.
+Update the connection string in *OpenSky - ETL.py* with your database credentials.
 
 ### 4. Execute the ETL script:
 
@@ -121,6 +121,6 @@ Update the connection string in OpenSky - ETL.py with your database credentials.
 *python "OpenSky - ETL.py"*
 ### 5. View the Dashboard:
 
-Open the *dashboards/OpenSky - ETL.pbix* file in Power BI Desktop.
+Open the dashboards *OpenSky - ETL.pbix* file in Power BI Desktop.
 
 Refresh the data to connect to your PostgreSQL database and see the latest data.
