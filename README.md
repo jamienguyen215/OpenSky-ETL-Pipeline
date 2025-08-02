@@ -36,60 +36,60 @@ The entire ETL process is automated using Windows Task Scheduler to run daily at
 
 The script makes an HTTP GET request to the OpenSky Network API to retrieve a snapshot of all flights currently in the air or on the ground.
 
-python
+`python
 import requests
 import json
 
 url = "[https://opensky-network.org/api/states/all](https://opensky-network.org/api/states/all)"
 response = requests.get(url)
-data = response.json()
+data = response.json()`
 
 ### 2. Data Transformation
 The raw JSON data is converted into a pandas DataFrame. Columns are defined according to the OpenSky API documentation. The transformation steps include:
 
-Filtering for planes that are on_ground.
+- Filtering for planes that are on_ground.
 
-Dropping records with missing latitude or longitude.
+- Dropping records with missing latitude or longitude.
 
-Enriching the data by finding the nearest_airport (within a 5-mile radius) using geopy.distance.geodesic.
+- Enriching the data by finding the nearest_airport (within a 5-mile radius) using geopy.distance.geodesic.
 
 ### 3. Data Loading
 The cleaned and transformed pandas DataFrame is then loaded into a PostgreSQL database table named OpenSkyApi. The if_exists='append' parameter ensures that new data is added with each ETL run.
 
-Python
+`Python
 
 import sqlalchemy as db
 
 engine = db.create_engine('postgresql://postgres:ABC@localhost:5432/OpenSkyApi')
-df.to_sql("OpenSkyApi", engine, if_exists='append', index=False)
+df.to_sql("OpenSkyApi", engine, if_exists='append', index=False)`
 
 Note: The database connection string postgresql://postgres:ABC@localhost:5432/OpenSkyApi in the provided script should be replaced with appropriate credentials and host for a production environment.
 
 ## Data Analysis (SQL)
 The OpenSky - ETL.sql file contains example queries used to analyze the loaded data.
 
-Count of total records and grounded planes.
+- Count of total records and grounded planes.
 
-Count of unique airports identified.
+- Count of unique airports identified.
 
-Aggregation of flight counts by airport.
+- Aggregation of flight counts by airport.
 
-SQL
+`SQL
 
 SELECT nearest_airport, COUNT(*) AS flight_count 
 FROM "OpenSkyApi"
 WHERE nearest_airport IS NOT NULL
 GROUP BY nearest_airport
-ORDER BY flight_count DESC;
+ORDER BY flight_count DESC;`
 
 ## Dashboard 
-The Power BI dashboard provides a visual summary of the data. The following screenshots show key metrics and visualizations, such as flight counts by airport.
-![Power BI Dashboard](screenshots/OpenSky-ETL-PowerBI-Dashboard-screenshot.png)
+- The Power BI dashboard provides a visual summary of the data. The following screenshots show key metrics and visualizations, such as flight counts by airport.
+![Power BI Dashboard](OpenSky-ETL-PowerBI-Dashboard-screenshot.png)
 
 ## Project Limitations
-Data Collection Schedule: The ETL pipeline is automated to run once a day, specifically at 11 am, to capture a daily snapshot. This project only collects data for a limited 7-day period, from August 1, 2025, to August 8, 2025.
+- Data Collection Schedule: The ETL pipeline is automated to run once a day, specifically at 11 am, to capture a daily snapshot. This project only collects data for a limited 7-day period, from August 1, 2025, to August 8, 2025.
 
-API Data Nature: The states/all endpoint of the OpenSky Network API provides a snapshot of real-time data. It does not provide historical data for a full 24-hour period. Therefore, the daily run captures only the flights visible at that specific moment in time.
+- API Data Nature: The states/all endpoint of the OpenSky Network API provides a snapshot of real-time data. It does not provide historical data for a full 24-hour period. Therefore, the daily run captures only the flights visible at that specific moment in time.
 
 
 ## How to Run the Project
@@ -108,11 +108,11 @@ cd OpenSky-ETL-Pipeline*
 
 ### 3. Set up PostgreSQL:
 
-Ensure you have a PostgreSQL server running.
+- Ensure you have a PostgreSQL server running.
 
-Create a database (e.g., OpenSkyApi).
+- Create a database (e.g., OpenSkyApi).
 
-Update the connection string in *OpenSky - ETL.py* with your database credentials.
+- Update the connection string in *OpenSky - ETL.py* with your database credentials.
 
 ### 4. Execute the ETL script:
 
@@ -121,6 +121,6 @@ Update the connection string in *OpenSky - ETL.py* with your database credential
 *python "OpenSky - ETL.py"*
 ### 5. View the Dashboard:
 
-Open the dashboards *OpenSky - ETL.pbix* file in Power BI Desktop.
+- Open the dashboard *OpenSky - ETL.pbix* file in Power BI Desktop.
 
-Refresh the data to connect to your PostgreSQL database and see the latest data.
+- Refresh the data to connect to your PostgreSQL database and see the latest data.
