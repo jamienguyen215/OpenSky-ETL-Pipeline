@@ -37,11 +37,15 @@ The entire ETL process is automated using Windows Task Scheduler to run daily at
 The script makes an HTTP GET request to the OpenSky Network API to retrieve a snapshot of all flights currently in the air or on the ground.
 
 `python`
+
 `import requests`
+
 `import json`
 
 `url = "[https://opensky-network.org/api/states/all](https://opensky-network.org/api/states/all)"`
+
 `response = requests.get(url)`
+
 `data = response.json()`
 
 ### 2. Data Transformation
