@@ -60,12 +60,13 @@ The raw JSON data is converted into a pandas DataFrame. Columns are defined acco
 ### 3. Data Loading
 The cleaned and transformed pandas DataFrame is then loaded into a PostgreSQL database table named OpenSkyApi. The if_exists='append' parameter ensures that new data is added with each ETL run.
 
-`Python
+`Python`
 
-import sqlalchemy as db
+`import sqlalchemy as db`
 
-engine = db.create_engine('postgresql://postgres:ABC@localhost:5432/OpenSkyApi')
-df.to_sql("OpenSkyApi", engine, if_exists='append', index=False)`
+`engine = db.create_engine('postgresql://postgres:ABC@localhost:5432/OpenSkyApi')`
+
+`df.to_sql("OpenSkyApi", engine, if_exists='append', index=False)`
 
 Note: The database connection string postgresql://postgres:ABC@localhost:5432/OpenSkyApi in the provided script should be replaced with appropriate credentials and host for a production environment.
 
@@ -78,13 +79,17 @@ The OpenSky - ETL.sql file contains example queries used to analyze the loaded d
 
 - Aggregation of flight counts by airport.
 
-`SQL
+`SQL`
 
-SELECT nearest_airport, COUNT(*) AS flight_count 
-FROM "OpenSkyApi"
-WHERE nearest_airport IS NOT NULL
-GROUP BY nearest_airport
-ORDER BY flight_count DESC;`
+`SELECT nearest_airport, COUNT(*) AS flight_count `
+
+`FROM "OpenSkyApi"`
+
+`WHERE nearest_airport IS NOT NULL`
+
+`GROUP BY nearest_airport`
+
+`ORDER BY flight_count DESC;`
 
 ## Dashboard 
 - The Power BI dashboard provides a visual summary of the data. The following screenshots show key metrics and visualizations, such as flight counts by airport.
@@ -99,16 +104,16 @@ ORDER BY flight_count DESC;`
 ## How to Run the Project
 ### 1. Clone the repository:
 
-*Bash*
+`*Bash*`
 
-*git clone [https://github.com/](https://github.com/)[Your-Username]/OpenSky-ETL-Pipeline.git
-cd OpenSky-ETL-Pipeline*
+`*git clone [https://github.com/](https://github.com/)[Your-Username]/OpenSky-ETL-Pipeline.git
+cd OpenSky-ETL-Pipeline*`
 
 ### 2. Install dependencies:
 
-*Bash:*
+`*Bash:*`
 
-*pip install -r requirements.txt*
+`*pip install -r requirements.txt*`
 
 ### 3. Set up PostgreSQL:
 
@@ -116,15 +121,15 @@ cd OpenSky-ETL-Pipeline*
 
 - Create a database (e.g., OpenSkyApi).
 
-- Update the connection string in *OpenSky - ETL.py* with your database credentials.
+- Update the connection string in `*OpenSky - ETL.py*` with your database credentials.
 
 ### 4. Execute the ETL script:
 
-*Bash*
+`*Bash*`
 
-*python "OpenSky - ETL.py"*
+`*python "OpenSky - ETL.py"*`
 ### 5. View the Dashboard:
 
-- Open the dashboard *OpenSky - ETL.pbix* file in Power BI Desktop.
+- Open the dashboard `*OpenSky - ETL.pbix*` file in Power BI Desktop.
 
 - Refresh the data to connect to your PostgreSQL database and see the latest data.
