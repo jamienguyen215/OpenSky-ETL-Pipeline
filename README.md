@@ -17,7 +17,7 @@ The entire ETL process is automated using Windows Task Scheduler to run daily at
 -   `OpenSky - ETL.py`: The core Python script that performs the ETL process. It uses `requests` to call the API, `pandas` for data manipulation, and `sqlalchemy` to connect to and load data into PostgreSQL.
 -   `OpenSky - ETL.sql`: SQL queries used for data analysis and verification within the PostgreSQL database.
 -   `OpenSky - ETL.ipynb`: The Jupyter Notebook version of the ETL script, useful for step-by-step development and documentation of the process.
--   `dashboards/OpenSky - ETL.pbix`: The Power BI file containing the data model, report, and visualizations.
+-   `OpenSky - ETL.pbix`: The Power BI file containing the data model, dashboard report, and visualizations.
 -   `OpenSky-ETL-PowerBI-Dashboard-screenshot.png`: screenshot of the Power BI dashboard, providing a visual overview of the final output.
 -   `requirements.txt`: A list of all Python libraries required to run the `OpenSky - ETL.py` script.
 
