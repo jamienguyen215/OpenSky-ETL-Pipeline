@@ -105,16 +105,16 @@ The OpenSky - ETL.sql file contains example queries used to analyze the loaded d
 ## How to Run the Project
 ### 1. Clone the repository:
 
-`*Bash*`
+`Bash`
 
-`*git clone [https://github.com/](https://github.com/)[Your-Username]/OpenSky-ETL-Pipeline.git
-cd OpenSky-ETL-Pipeline*`
+`git clone [https://github.com/](https://github.com/)[Your-Username]/OpenSky-ETL-Pipeline.git
+cd OpenSky-ETL-Pipeline`
 
 ### 2. Install dependencies:
 
-`*Bash:*`
+`Bash`
 
-`*pip install -r requirements.txt*`
+`pip install -r requirements.txt`
 
 ### 3. Set up PostgreSQL:
 
@@ -122,15 +122,15 @@ cd OpenSky-ETL-Pipeline*`
 
 - Create a database (e.g., OpenSkyApi).
 
-- Update the connection string in `*OpenSky - ETL.py*` with your database credentials.
+- Update the connection string in `OpenSky - ETL.py` with your database credentials.
 
 ### 4. Execute the ETL script:
 
-`*Bash*`
+`Bash`
 
-`*python "OpenSky - ETL.py"*`
+`python "OpenSky - ETL.py"`
 ### 5. View the Dashboard:
 
-- Open the dashboard `*OpenSky - ETL.pbix*` file in Power BI Desktop.
+- Open the dashboard `OpenSky - ETL.pbix` file in Power BI Desktop.
 
 - Refresh the data to connect to your PostgreSQL database and see the latest data.
