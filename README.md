@@ -92,7 +92,8 @@ The OpenSky - ETL.sql file contains example queries used to analyze the loaded d
 `ORDER BY flight_count DESC;`
 
 ## Dashboard 
-- The Power BI dashboard provides a visual summary of the data. The following screenshots show key metrics and visualizations, such as flight counts by airport.
+- The Power BI dashboard provides a visual summary of the data. The following screenshot shows key metrics and visualizations, such as flight counts by airport.
+  
 ![Power BI Dashboard](OpenSky-ETL-PowerBI-Dashboard-screenshot.png)
 
 ## Project Limitations
